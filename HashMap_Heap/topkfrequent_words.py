@@ -2,6 +2,11 @@ from collections import Counter
 import heapq
 from typing import List
 
+TEST_CASES = [
+    (["i","love","leetcode","i","love","coding"], 2),
+    (["the","day","is","sunny","the","the","the","sunny","is","is"], 4),
+]
+
 def topKFrequent_heap(words: List[str], k: int) -> List[str]:
     """
     Return top-k frequent words in a list using binary heap (priority queue).
@@ -17,6 +22,7 @@ def topKFrequent_heap(words: List[str], k: int) -> List[str]:
     Complexity Analysis:
     -------------------
     Time: O(N + U + k*log(U))
+    Time: O(N) for counting freq, O(U) for building heap, O(k*log(U)) for popping top k elements
     Space: O(U)
     
     Why is space O(U)?
@@ -49,14 +55,14 @@ def topKFrequent_Counter_sorted(words: List[str], k: int) -> List[str]:
     Space: O(U) due to storing unique words
 
     """
-    # Use counter to count the frequency of each word in O(U) time.
-    count = Counter(words)
+    # # Use counter to count the frequency of each word in O(U) time.
+    # count = Counter(words)
     
-    # sorted() is ascending; so we have to invert the frequency with a minus sign to get the
-    # descending frequency.
-    ordered = sorted(count.keys(), key=lambda w: (-count[w], w))
+    # # sorted() is ascending; so we have to invert the frequency with a minus sign to get the
+    # # descending frequency.
+    # ordered = sorted(count.keys(), key=lambda w: (-count[w], w))
     
-    return ordered[:k]
+    # return ordered[:k]
 
 # Test the function
 print(topKFrequent_heap(["i", "love", "leetcode", "i", "love", "coding"], 2))
