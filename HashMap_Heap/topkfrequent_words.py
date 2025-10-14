@@ -80,7 +80,7 @@ def topKFrequent_sort(words: List[str], k: int) -> List[str]:
     return ordered[:k]
 
 
-def run_demo()
+def run_demo():
     solvers = {
         "heap_all": topKFrequent_heap,
         "sorted": topKFrequent_sort,
