@@ -2,9 +2,21 @@ from collections import Counter
 import heapq
 from typing import List
 
+# ------------------------------------------------------------------------------------------------
+# Test Cases
+# ------------------------------------------------------------------------------------------------
+
 TEST_CASES = [
     (["i","love","leetcode","i","love","coding"], 2),
     (["the","day","is","sunny","the","the","the","sunny","is","is"], 4),
+    (["hello","hello","hello","hello","hello"], 1),  # single unique word
+    (["apple","banana","apple","banana","cherry"], 2),  # freq tie resolved lexicographically
+    (["alpha","beta","gamma","delta","epsilon","zeta","eta","theta"], 3),  # all unique, k < len
+    (["Cat","cat","dog","dog","dog","CAT","dog","cat"], 2),  # case sensitivity
+    (["news","news","news","sports","sports","weather","finance","finance","finance","finance"], 3),  # dominant winner
+    (["nlp","ml","ai","data","nlp","ml","ai","nlp","ml","ai","ml","nlp","ai","data"], 2),  # three-way tie stretched
+    ("""to be or not to be that is the question whether tis nobler in the mind to suffer""".split(), 5),  # Shakespeare chunk
+    ("""call me ishmael some years ago never mind how long precisely having little or no money in my purse""".split(), 4),  # prose slice
 ]
 
 def topKFrequent_heap(words: List[str], k: int) -> List[str]:
