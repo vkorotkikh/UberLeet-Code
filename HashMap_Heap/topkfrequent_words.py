@@ -47,9 +47,20 @@ def topKFrequent_Counter_sorted(words: List[str], k: int) -> List[str]:
     -------------------
     Time: O(U log(U)) due to sorting unique words
     Space: O(U) due to storing unique words
-    
-    Where do the unique words get stored?
-    
-    
-    
+
     """
+    # Use counter to count the frequency of each word in O(U) time.
+    count = Counter(words)
+    
+    # sorted() is ascending; so we have to invert the frequency with a minus sign to get the
+    # descending frequency.
+    ordered = sorted(count.keys(), key=lambda w: (-count[w], w))
+    
+    return ordered[:k]
+
+# Test the function
+print(topKFrequent_heap(["i", "love", "leetcode", "i", "love", "coding"], 2))
+print(topKFrequent_heap(["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], 4))
+
+print(topKFrequent_Counter_sorted(["i", "love", "leetcode", "i", "love", "coding"], 2))
+print(topKFrequent_Counter_sorted(["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], 4))
