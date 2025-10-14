@@ -57,9 +57,10 @@ def topKFrequent_heap(words: List[str], k: int) -> List[str]:
     return result
 
 # Do full sort solution with Counter and sorted plus lambda function
-def topKFrequent_Counter_sorted(words: List[str], k: int) -> List[str]:
+def topKFrequent_sort(words: List[str], k: int) -> List[str]:
     """ 
     Sort all the unique words in a list by (-freq, word) and slice the first k elements.
+    Full sort and simplest solution, but can be slower than heap for larger datasets.
     
     Complexity Analysis:
     -------------------
@@ -79,9 +80,15 @@ def topKFrequent_Counter_sorted(words: List[str], k: int) -> List[str]:
     return ordered[:k]
 
 
-# Test the function
-print(topKFrequent_heap(["i", "love", "leetcode", "i", "love", "coding"], 2))
-print(topKFrequent_heap(["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], 4))
+def run_demo()
+    solvers = {
+        "heap_all": topKFrequent_heap,
+        "sorted": topKFrequent_sort,
+    }
+    for label, func in solvers.items():
+        print(f"{label}: {func.__doc__}")
+        for words, k in TEST_CASES:
+            print(func(words, k))
 
-print(topKFrequent_Counter_sorted(["i", "love", "leetcode", "i", "love", "coding"], 2))
-print(topKFrequent_Counter_sorted(["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], 4))
+if __name__ == "__main__":
+    run_demo()
