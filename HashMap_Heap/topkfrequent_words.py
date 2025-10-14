@@ -55,14 +55,17 @@ def topKFrequent_Counter_sorted(words: List[str], k: int) -> List[str]:
     Space: O(U) due to storing unique words
 
     """
-    # # Use counter to count the frequency of each word in O(U) time.
-    # count = Counter(words)
+    # Use counter to count the frequency of each word in O(n) time.
+    # Counter returns a dictionary of word : frequency
+    count = Counter(words)
     
-    # # sorted() is ascending; so we have to invert the frequency with a minus sign to get the
-    # # descending frequency.
-    # ordered = sorted(count.keys(), key=lambda w: (-count[w], w))
+    # Sort the unique words by (-freq, word), inverting the frequency with - sign such that
+    # the highest frequency starts first
+    ordered = (sorted(count.keys(), key=lambda w: (-count[w], w)))
     
-    # return ordered[:k]
+    # return first k elements via list slicing
+    return ordered[:k]
+
 
 # Test the function
 print(topKFrequent_heap(["i", "love", "leetcode", "i", "love", "coding"], 2))
