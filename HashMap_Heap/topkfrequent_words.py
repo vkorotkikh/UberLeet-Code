@@ -42,7 +42,7 @@ def topKFrequent_heap(words: List[str], k: int) -> List[str]:
     We are storing the frequency of each word in a dictionary which takes O(U) space.
     """
 
-    # Use conter to count the frequency of each word in O(n) time.
+    # Use Counter to count the frequency of each word in O(n) time.
     freq = Counter(words) # freq is a dictionary of word : frequency
     
     # Build a heap of tuples (-frequency, word) in O(U) time.
